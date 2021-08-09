@@ -1,0 +1,102 @@
+.team {
+  padding: 2rem 1rem;
+}
+
+.teams__add-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem 1rem;
+}
+
+.teams__add-player-find {
+  margin-top: 1.2rem;
+}
+
+.teams__add-player-find-button {
+  margin-left: 0.8rem;
+}
+
+.team__name {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.team__avgStats {
+  padding: 2rem 1rem;
+  background-color: #dddddd;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.team__avgStats table {
+  /*flex-basis: 100%;*/
+  border-collapse: collapse;
+}
+
+.team__avgStats th {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.team__avgStats td, th {
+  border: 1px solid #000;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.team__wrapper {
+  flex-basis: 100%;
+  padding: 2rem 1rem;
+  min-height: 600px;
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.team__player-list {
+  flex-basis: 40%;
+  background-image: url('https://images.fineartamerica.com/images-medium-large-5/1-football-soccer-pitch-gordan-poropat.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.team__player {
+  flex-basis: 30%;
+
+  background: white;
+  opacity: 0.95;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.team__player p {
+  margin: 0.3rem;
+}
+
+.team__player_card {
+  flex-basis: 40%;
+}
+
+.team__stat {
+  margin-top: 0.8rem;
+  width: 80%;
+
+  display: flex;
+  justify-content: space-between;
+}

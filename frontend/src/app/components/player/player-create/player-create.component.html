@@ -1,0 +1,428 @@
+<main class="main">
+  <div class="container">
+    <form
+      [formGroup]="newPlayerForm"
+      (ngSubmit)="createPlayer()"
+      class="new-player"
+    >
+      <h1>General</h1>
+      <mat-form-field class="new-player__input" appearance="outline">
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="firstName"
+          autocomplete="off"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="new-player__input" appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="lastName"
+          autocomplete="off"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="new-player__input" appearance="outline">
+        <mat-label>Age</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="age"
+          autocomplete="off"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="new-player__input" appearance="outline">
+        <mat-label>Nationality</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="nationality"
+          [matAutocomplete]="auto_country"
+          autocomplete="off"
+        />
+      </mat-form-field>
+
+      <mat-autocomplete #auto_country="matAutocomplete">
+        <mat-option
+          *ngFor="let country of filteredCountries | async"
+          [value]="country"
+          >{{ country }}</mat-option
+        >
+      </mat-autocomplete>
+
+      <mat-form-field class="new-player__input" appearance="outline">
+        <mat-label>Club</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="club"
+          autocomplete="off"
+          (change)="clubChanged()"
+        />
+        <mat-hint>If free agent -> 'free agent'</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="new-player__input" appearance="outline">
+        <mat-label>League</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="league"
+          autocomplete="off"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="new-player__input">
+        <mat-label>Position</mat-label>
+        <mat-select formControlName="position">
+          <mat-option *ngFor="let position of positions" [value]="position">
+            {{ position }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="new-player__input" appearance="outline">
+        <mat-label>Height</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="height"
+          autocomplete="off"
+        />
+        <span matSuffix>cm</span>
+      </mat-form-field>
+
+      <mat-form-field class="new-player__input" appearance="outline">
+        <mat-label>Weight</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="weight"
+          autocomplete="off"
+        />
+        <span matSuffix>kg</span>
+      </mat-form-field>
+
+      <form formGroupName="attributes">
+        <h1>Attributes</h1>
+        <mat-label>Skill stars</mat-label>
+        <mat-slider
+          thumbLabel
+          tickInterval="1"
+          min="0"
+          max="5"
+          formControlName="skillStars"
+        ></mat-slider>
+
+        <mat-label>Weak foot</mat-label>
+        <mat-slider
+          thumbLabel
+          tickInterval="1"
+          min="0"
+          max="5"
+          formControlName="weakFoot"
+        ></mat-slider>
+
+        <mat-form-field class="new-player__input" appearance="outline">
+          <mat-label>Play style</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="playStyle"
+            autocomplete="off"
+          />
+        </mat-form-field>
+
+        <form formGroupName="workRate">
+          <h2>Work Rate</h2>
+          <mat-form-field class="new-player__input">
+            <mat-label>Offensive</mat-label>
+            <mat-select formControlName="offensive">
+              <mat-option *ngFor="let rate of workRates" [value]="rate">
+                {{ rate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="new-player__input">
+            <mat-label>Defensive</mat-label>
+            <mat-select formControlName="deffensive">
+              <mat-option *ngFor="let rate of workRates" [value]="rate">
+                {{ rate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </form>
+
+      <div class="new-player__skills-set">
+        <h1>Complex skills</h1>
+        <form formGroupName="pace">
+          <h2>Pace</h2>
+          <mat-label>Acceleration</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="acceleration"
+          ></mat-slider>
+
+          <mat-label>Speed</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="speed"
+          ></mat-slider>
+        </form>
+
+        <form formGroupName="physical">
+          <h2>Physical</h2>
+          <mat-label>Jumping</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="jumping"
+          ></mat-slider>
+
+          <mat-label>Stamina</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="stamina"
+          ></mat-slider>
+
+          <mat-label>Strength</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="strength"
+          ></mat-slider>
+        </form>
+
+        <form formGroupName="shooting">
+          <h2>Shooting</h2>
+          <mat-label>Finishing</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="finishing"
+          ></mat-slider>
+
+          <mat-label>Power</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="power"
+          ></mat-slider>
+
+          <mat-label>Free kick</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="freeKick"
+          ></mat-slider>
+
+          <mat-label>Penalties</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="penalties"
+          ></mat-slider>
+
+          <mat-label>Penalties</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="penalties"
+          ></mat-slider>
+
+          <mat-label>Long shots</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="longShots"
+          ></mat-slider>
+
+          <mat-label>Heading</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="heading"
+          ></mat-slider>
+        </form>
+
+        <form formGroupName="defending">
+          <h2>Defending</h2>
+          <mat-label>Interceptions</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="interceptions"
+          ></mat-slider>
+
+          <mat-label>Aggression</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="aggression"
+          ></mat-slider>
+
+          <mat-label>Clearing</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="clearing"
+          ></mat-slider>
+
+          <mat-label>Reaction</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="reaction"
+          ></mat-slider>
+
+          <mat-label>Tackle</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="tackle"
+          ></mat-slider>
+        </form>
+
+        <form formGroupName="passing">
+          <h2>Passing</h2>
+          <mat-label>Accuracy</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="accuracy"
+          ></mat-slider>
+
+          <mat-label>Short Passing</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="shortPassing"
+          ></mat-slider>
+
+          <mat-label>Long Passing</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="longPassing"
+          ></mat-slider>
+
+          <mat-label>Curl</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="curl"
+          ></mat-slider>
+
+          <mat-label>Crossing</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="crossing"
+          ></mat-slider>
+        </form>
+
+        <form formGroupName="dribbling">
+          <h2>Dribbling</h2>
+          <mat-label>Ball control</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="ballControl"
+          ></mat-slider>
+
+          <mat-label>Composure</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="composure"
+          ></mat-slider>
+
+          <mat-label>Agility</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="agility"
+          ></mat-slider>
+
+          <mat-label>Balance</mat-label>
+          <mat-slider
+            thumbLabel
+            tickInterval="1"
+            min="0"
+            max="100"
+            formControlName="balance"
+          ></mat-slider>
+        </form>
+      </div>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="submit-button"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</main>

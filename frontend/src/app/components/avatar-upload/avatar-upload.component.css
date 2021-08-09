@@ -1,0 +1,16 @@
+.avatar-form {
+  margin: 2rem 0;
+}
+
+label {
+  display: block;
+  font-size: 1.8rem;
+}
+
+input {
+  margin: 2rem 0;
+}
+
+button {
+  display: block;
+}

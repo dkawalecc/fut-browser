@@ -1,0 +1,24 @@
+<main *ngIf="teams" class="teams">
+  <header class="teams__actions">
+    <div class="teams__buttons-wrapper">
+      <button class="players__action-button" mat-raised-button routerLink="/teams/new">Create team</button>
+    </div>
+    <p class="teams__count">
+      There are currently
+      <span class="teams__available"
+        >{{ teams.length }} teams available</span
+      >.
+    </p>
+  </header>
+
+  <div *ngIf="teams" class="team__container">
+    <article class="team" *ngFor="let team of teams">
+        <a *ngIf="team" class="team__card" routerLink="/teams/{{team._id}}">
+            <p>Team name: {{team.name}}</p>
+            <p>Overall rating: {{getOverallStats(team)}}</p>
+        </a>
+    </article>
+  </div>
+
+
+</main>

@@ -1,0 +1,46 @@
+.nav {
+  padding: 1rem 1rem;
+  background-color: #eee;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo__text {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  font-size: 2rem;
+  transition: color ease-in-out 0.3s;
+  margin-right: 15px;
+}
+
+.logo__text:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.button--margin {
+  margin-right: 1.2rem;
+}
+
+@media screen and (max-width: 400px) {
+  .nav {
+    flex-direction: column;
+    padding: 1.2rem 1rem;
+  }
+
+  .logo {
+    margin-bottom: 1.2rem;
+  }
+
+  .auth-controls {
+    text-align: center;
+  }
+}

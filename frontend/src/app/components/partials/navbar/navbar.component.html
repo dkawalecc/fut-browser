@@ -1,0 +1,63 @@
+<nav class="nav">
+  <div class="logo">
+    <a routerLink="/" class="logo__text">fut-browser</a>
+    <a
+      mat-stroked-button
+      color="link"
+      *ngIf="this.authService.isLoggedIn"
+      routerLink="/players"
+      class="button--margin"
+    >
+      Players
+    </a>
+
+    <a
+      mat-stroked-button
+      color="link"
+      *ngIf="this.authService.isLoggedIn"
+      routerLink="/teams"
+      class="button--margin"
+    >
+      Teams
+    </a>
+  </div>
+
+  <div class="auth-controls">
+    
+
+    <a
+      mat-raised-button
+      *ngIf="!this.authService.isLoggedIn"
+      routerLink="/register"
+      class="button--margin"
+      >Register</a
+    >
+
+    <a
+      mat-raised-button
+      color="primary"
+      *ngIf="!this.authService.isLoggedIn"
+      routerLink="/login"
+      >Login</a
+    >
+
+    <a
+      mat-stroked-button
+      color="link"
+      *ngIf="this.authService.isLoggedIn"
+      routerLink="/me"
+      class="button--margin"
+    >
+      My profile
+    </a>
+
+    <button
+      mat-raised-button
+      color="primary"
+      *ngIf="this.authService.isLoggedIn"
+      (click)="this.authService.logOut()"
+    >
+      Logout
+    </button>
+  </div>
+</nav>

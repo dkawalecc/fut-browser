@@ -1,0 +1,19 @@
+<main *ngIf="players" class="players">
+  <header class="players__actions">
+    <div class="players__buttons-wrapper">
+      <button class="players__action-button" mat-raised-button routerLink="/players/new">Create player</button>
+    </div>
+    <p class="players__count">
+      There are currently
+      <span class="players__available"
+        >{{ players.length }} players available</span
+      >.
+    </p>
+  </header>
+
+  <div class="players__container">
+    <article class="player" *ngFor="let player of players">
+      <app-player-card *ngIf="player" [player]="player"></app-player-card>
+    </article>
+  </div>
+</main>

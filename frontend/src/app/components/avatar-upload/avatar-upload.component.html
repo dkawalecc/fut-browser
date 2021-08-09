@@ -1,0 +1,9 @@
+<div class="avatar-form">
+  <label for="avatar">Choose Avatar</label>
+  <input
+    type="file"
+    id="avatar"
+    (change)="handleAvatarInput($event.target.files)"
+  />
+  <button mat-raised-button (click)="uploadAvatar()">Upload avatar</button>
+</div>

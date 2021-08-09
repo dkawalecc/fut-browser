@@ -1,0 +1,41 @@
+.main {
+  padding: 3rem 1rem;
+}
+
+.new-player {
+  background-color: #ddd;
+  border-radius: 15px;
+  padding: 2rem 1.3rem;
+}
+
+.new-player__skills-set {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.new-player__skills-set > h1 {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.new-player__skills-set > form {
+  flex-basis: 50%;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  align-self: stretch;
+}
+
+button {
+  margin-top: 1.3rem;
+}
+
+.new-player__input {
+  width: 60%;
+}

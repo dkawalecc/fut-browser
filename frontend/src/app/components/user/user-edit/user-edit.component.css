@@ -1,0 +1,12 @@
+.section {
+  padding: 2rem 1rem;
+  background-color: #ddd;
+}
+
+.field--edit {
+  display: block;
+}
+
+.divider {
+  margin: 2rem 0;
+}

@@ -1,0 +1,13 @@
+<main class="main">
+  <div class="container">
+    <h2 class="title">Create a new team</h2>
+    <form [formGroup]="teamForm" (ngSubmit)="createTeam()">
+      <mat-form-field class="input">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </div>
+</main>

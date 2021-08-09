@@ -1,0 +1,189 @@
+<main *ngIf="team" class="team">
+  <div class="container">
+    <h1 class="team__name">{{team.name}}</h1>
+
+    <section class="teams__add-player">
+      <a
+        mat-raised-button
+        color="primary"
+        *ngIf="isOwner()"
+        (click)="showPlayerList = !showPlayerList"
+      >Add player</a
+      >
+      <div class="teams__add-player-find" *ngIf="showPlayerList">
+        <mat-form-field class="new-player__input" appearance="outline">
+          <mat-label>Player ID</mat-label>
+          <input
+            matInput
+            type="text"
+            [formControl]="addPlayerId"
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <a
+          class="teams__add-player-find-button"
+          mat-raised-button
+          color="primary"
+          *ngIf="isOwner()"
+          (click)="addPlayer()"
+        >Submit</a
+        >
+      </div>
+    </section>
+
+    <section class="team__avgStats">
+      <h2>Overall stats</h2>
+      <table class="team__overall">
+        <thead>
+          <th>Pace</th>
+          <th>Shooting</th>
+          <th>Passing</th>
+          <th>Dribbling</th>
+          <th>Defending</th>
+          <th>Physical</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ team.avgStats.pace.overall | number:'1.0-1' }}</td>
+            <td>{{ team.avgStats.shooting.overall  | number:'1.0-1' }}</td>
+            <td>{{ team.avgStats.passing.overall  | number:'1.0-1' }}</td>
+            <td>{{ team.avgStats.dribbling.overall  | number:'1.0-1' }}</td>
+            <td>{{ team.avgStats.defending.overall  | number:'1.0-1' }}</td>
+            <td>{{ team.avgStats.physical.overall  | number:'1.0-1' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <section class="team__wrapper">
+    <div class="team__player-list">
+      <div class="team__player" *ngFor="let player of team.players" (click)="playerSelected(player)">
+        <p>{{player.firstName}}</p>
+        <p>{{player.lastName}}</p>
+        <p>{{player.position}}</p>
+      </div>
+    </div>
+    <div *ngIf="selectedPlayer" class="team__player_card">
+      <app-player-card [player]="selectedPlayer"></app-player-card>
+    </div>
+  </section>
+
+  <section class="team__avgStats">
+    <h2>Detailed overall stats</h2>
+    <div class="team__stat">
+      <h3 class="team__stat-name">Pace: <b>{{team.avgStats.pace.overall | number:'1.0-1' }}</b></h3>
+      <table>
+        <thead>
+          <th>Acceleration</th>
+          <th>Speed</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{team.avgStats.pace.acceleration | number:'1.0-1' }}</td>
+            <td>{{team.avgStats.pace.speed | number:'1.0-1' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="team__stat">
+      <h3 class="team__stat-name"> Shooting: <b>{{team.avgStats.shooting.overall | number:'1.0-1' }}</b></h3>
+      <table>
+        <thead>
+        <th>Finishing</th>
+        <th>Power</th>
+        <th>Penalties</th>
+        <th>Long shots</th>
+        <th>Heading</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{team.avgStats.shooting.finishing | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.shooting.power | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.shooting.penalties | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.shooting.longShots | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.shooting.heading | number:'1.0-1' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="team__stat">
+      <h3 class="team__stat-name"> Passing: <b>{{team.avgStats.passing.overall | number:'1.0-1' }}</b></h3>
+      <table>
+        <thead>
+        <th>Accuracy</th>
+        <th>Short</th>
+        <th>Long</th>
+        <th>Curl</th>
+        <th>Crossing</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{team.avgStats.passing.accuracy | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.passing.shortPassing | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.passing.longPassing | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.passing.curl | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.passing.crossing | number:'1.0-1' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="team__stat">
+      <h3 class="team__stat-name"> Dribbling: <b>{{team.avgStats.dribbling.overall | number:'1.0-1' }}</b></h3>
+      <table>
+        <thead>
+        <th>Ball control</th>
+        <th>Composure</th>
+        <th>Agility</th>
+        <th>Balance</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{team.avgStats.dribbling.ballControl | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.dribbling.composure | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.dribbling.agility | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.dribbling.balance | number:'1.0-1' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="team__stat">
+      <h3 class="team__stat-name"> Defending: <b>{{team.avgStats.defending.overall | number:'1.0-1' }}</b></h3>
+      <table>
+        <thead>
+        <th>Interceptions</th>
+        <th>Aggression</th>
+        <th>Clearing</th>
+        <th>Reaction</th>
+        <th>Tackle</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{team.avgStats.defending.interceptions | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.defending.aggression | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.defending.clearing | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.defending.reaction | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.defending.tackle | number:'1.0-1' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="team__stat">
+      <h3 class="team__stat-name"> Physical: <b>{{team.avgStats.physical.overall | number:'1.0-1' }}</b></h3>
+      <table>
+        <thead>
+        <th>Jumping</th>
+        <th>Stamina</th>
+        <th>Strength</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{team.avgStats.physical.jumping | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.physical.stamina | number:'1.0-1' }}</td>
+          <td>{{team.avgStats.physical.strength | number:'1.0-1' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

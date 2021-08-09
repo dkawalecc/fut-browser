@@ -1,0 +1,18 @@
+.main {
+  padding: 3rem 1rem;
+}
+
+.new-player {
+  background-color: #ddd;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2rem 1.3rem;
+}
+
+.new-player__input {
+  width: 60%;
+}

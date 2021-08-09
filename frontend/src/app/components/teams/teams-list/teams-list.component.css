@@ -1,0 +1,77 @@
+.teams {
+    padding: 3rem 1rem;
+  }
+
+
+  .teams__actions {
+    max-width: 80%;
+    background-color: #ddd;
+    border-radius: 1rem;
+
+    margin: 0 auto 2.5rem auto;
+    padding: 0.8rem 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* --- */
+  }
+
+  .teams__action-button {
+    margin-right: 0.8rem;
+  }
+
+  .teams__count {
+    margin: 0;
+  }
+
+  .teams__available {
+    font-weight: 700;
+    color: dodgerblue;
+  }
+
+  .teams__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .team {
+    margin-bottom: 2rem;
+    flex-basis: 23%;
+  }
+
+  .team__card {
+    max-width: 40%;
+    background-color: #f3f3f3;
+    border: 1.5px solid #aaa;
+    border-radius: 1rem;
+    color: black;
+
+    margin: 0 auto 2.5rem auto;
+    padding: 0.8rem 1rem;
+
+    display: flex;
+    align-content: center;
+    justify-items: center;
+    justify-content: space-between;
+
+    text-decoration: none;
+  }
+
+  .team__card p {
+    margin: auto 0;
+    font-weight: 400;
+    font-size: large;
+    color: black;
+  }
+
+  @media screen and (max-width: 580px) {
+    .teams__actions {
+      flex-direction: column;
+    }
+
+    .teams__count {
+      margin-top: 1.2rem;
+    }
+  }

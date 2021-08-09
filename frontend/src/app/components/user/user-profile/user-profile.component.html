@@ -1,0 +1,44 @@
+<article class="profile">
+  <mat-card *ngIf="user" class="profile__card">
+    <mat-card-header>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="
+        this.user.hasAvatar
+          ? 'http://localhost:3000/api/users/me/avatar'
+          : 'https://i.kym-cdn.com/photos/images/original/001/432/525/b01.jpeg'
+      "
+      alt="Photo of a Shiba Inu"
+    />
+    <mat-card-content>
+      <h2 class="title">My Teams</h2>
+      <div class="teams">
+        <p *ngIf="user.teams.length === 0">Nothing here yet.</p>
+        <div class="teams__team" *ngFor="let team of user.teams">
+          <a class="teams__team-link" routerLink="/teams/{{team._id}}">{{ team.name }}</a>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a
+        mat-flat-button
+        color="accent"
+        class="button--edit"
+        routerLink="/me/edit"
+      >
+        Edit
+      </a>
+      <button
+        mat-flat-button
+        color="warn"
+        class="button--delete"
+        (click)="deleteUser()"
+      >
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</article>

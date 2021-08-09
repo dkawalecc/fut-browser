@@ -1,0 +1,18 @@
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  padding: 0 0.8rem;
+}
+
+.stats__stat {
+  flex-basis: 40%;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.stats__name {
+  font-weight: 900;
+}

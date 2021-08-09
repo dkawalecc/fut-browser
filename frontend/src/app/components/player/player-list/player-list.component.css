@@ -1,0 +1,51 @@
+.players {
+  padding: 3rem 1rem;
+}
+
+.players__actions {
+  max-width: 80%;
+  background-color: #ddd;
+  border-radius: 1rem;
+
+  margin: 0 auto 2.5rem auto;
+  padding: 0.8rem 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* --- */
+}
+
+.players__action-button {
+  margin-right: 0.8rem;
+}
+
+.players__count {
+  margin: 0;
+}
+
+.players__available {
+  font-weight: 700;
+  color: dodgerblue;
+}
+
+.players__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.player {
+  margin-bottom: 2rem;
+  flex-basis: 23%;
+}
+
+@media screen and (max-width: 580px) {
+  .players__actions {
+    flex-direction: column;
+  }
+
+  .players__count {
+    margin-top: 1.2rem;
+  }
+}

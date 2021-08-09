@@ -1,0 +1,26 @@
+<section class="section">
+  <div class="container">
+    <app-avatar-upload (avatarUploaded)="uploadedAvatar()"></app-avatar-upload>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <form [formGroup]="userEditForm" (ngSubmit)="updateUser()">
+      <mat-form-field class="field--edit">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field class="field--edit">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field class="field--edit">
+        <mat-label>Do you want to change your password?</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </div>
+</section>
